@@ -5,13 +5,13 @@
 
 <html>
 <head>
-	<title>Home</title>
+	<title>doA</title>
 </head>
 <body>
 <h1>
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P>  ex01 forder under doA  .....</P>
 </body>
 </html>
