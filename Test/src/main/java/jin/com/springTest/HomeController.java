@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
@@ -45,13 +46,41 @@ public class HomeController {
         logger.info("home........................");
         
         List<MemberVO> memberList = service.selectMember();
+        logger.info("home memberList >"+memberList);
         
         model.addAttribute("memberList", memberList);
  
         return "home_dto_select"; //views폴더아래 home_dto_select.jsp를 호출한다.
     }
 
-
+	@RequestMapping(value = "/homeDtoInsert")  //URL에서 호출할 정보 ex) http://localhost:8080/springTest/homeDtoInsert
+    public String homeDtoInsert(MemberVO jspRecvParam, Model model) throws Exception{ //첫번째 파라미터는 jsp로부터 파리미터정보 받고, 두번째 파라미터는 jsp로 정보 전달
+ 
+		String id = jspRecvParam.getId();
+		String pw = jspRecvParam.getPw();
+		String name = jspRecvParam.getName();
+		
+        logger.info("mysql db insert test...");
+        if( !Objects.isNull(id) ) {
+        	MemberVO memberVO = new MemberVO();
+//          memberVO.setId("100");
+//          memberVO.setPw("pw-100");
+//          memberVO.setName("name-100");
+          memberVO.setId(id);
+          memberVO.setPw(pw);
+          memberVO.setName(name);
+          int retval = service.insertMember(memberVO);
+          logger.info("mysql after db insert :"+retval);
+          
+          model.addAttribute("insertDBSuccess", retval);
+        }else {
+          model.addAttribute("insertDBSuccess", "0");
+        }
+        
+        
+        return "home_dto_insert"; //views폴더아래 home_dto_select.jsp를 호출한다.
+    }
+	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.

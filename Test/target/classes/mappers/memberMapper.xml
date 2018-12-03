@@ -18,6 +18,10 @@
         SELECT id, pw ,name FROM TEST
     </select>
 
+    <insert id="insertMember">
+        <!-- insert into test values('id-9','pw9','name9') -->
+        insert into test values(#{id}, #{pw}, #{name})
+    </insert>
     
 </mapper>
 
