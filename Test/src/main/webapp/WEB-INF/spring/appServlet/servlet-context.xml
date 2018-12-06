@@ -10,6 +10,7 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
+	<!-- 컴파일시 참조 역활 /@Controller, @Autowired, @Inject 등을 사용 가능하게 함 -->
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
@@ -21,7 +22,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 스프링 빈을 태그로 등록하지 않고 자동으로 검색 설정(auto scan) -->
 	<context:component-scan base-package="jin.com.springTest" />
+	<context:component-scan base-package="com.example.board" />
 	
 	
 	

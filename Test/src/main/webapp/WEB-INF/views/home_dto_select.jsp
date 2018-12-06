@@ -8,7 +8,7 @@
 <title>Home_dto_select</title>
 </head>
 <body>
-    <h1>STS DB DTO Access</h1>
+    <h1>STS Mysql DTO Select</h1>
  
     <table>
         <thead>
